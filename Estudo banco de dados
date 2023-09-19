@@ -1,0 +1,16 @@
+import mysql.connector
+
+cnx =mysql.connector.connect(host='localhost',database='db_biblioteca')
+
+if cnx.is_connected():
+     db_info = cnx.get_server_info()
+        print("Conectado ao servidor Mysql versao ", db_info)
+     cursor = cnx.cursor()
+     cursor.execute("select database();")
+     linha = cursor.fetchone()
+       print("Conectado ao banco de dados", linha)
+
+if cnx.is_connected():
+    cursor.close()
+cnx.close()
+print("conexao ao mysql foi encerrada")
